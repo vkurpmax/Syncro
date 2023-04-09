@@ -200,7 +200,7 @@ b = 1
 START.wait_for_press()
 print("Pressed")
 
-InputKordinat_X();
+InputKoordinat_X()
 InputKordinat_Y();
 InputKordinat_Z();
 
