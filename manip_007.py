@@ -11,11 +11,13 @@ b = 0
 
 X = 0.0
 Y = 0.0
+Z = 0.0
 
 keypressed = ''
 
 IptKoordinat_X = ''
 IptKoordinat_Y = ''
+IptKoordinat_Z = ''
 
 # - - - - - - - - - - - - - - - - 
 # - - - - - - - SETUP - - - - - -
@@ -120,7 +122,7 @@ def InputKoordinat_X():
     while True:
         IptKoordinat_X = ''
         X = 0
-        print('LCD Homepage')
+        print('LCD Homepage X')
         lcd.clear()
         lcd.cursor_pos = (0, 0)
         lcd.write_string('INPUT KOORDINAT X,Y,Z')
@@ -145,7 +147,6 @@ def InputKoordinat_X():
                     lcd.write_string('  INPUT BERHASIL ')
                     lcd.cursor_pos = (2, 0)
                     lcd.write_string('   TERHAPUS   ')
-                    #InputKoordinat_X = ''
                     a = 0
                     time.sleep(1)
                     break
@@ -154,7 +155,6 @@ def InputKoordinat_X():
                     lcd.write_string(str(keypressed))
                     a += 1
                     IptKoordinat_X = f"{IptKoordinat_X}{keypressed}"
-                    print(IptKoordinat_X)
                     X = int(IptKoordinat_X)
                     print(X)
                     if keypressed == 'C':
@@ -164,12 +164,10 @@ def InputKoordinat_X():
                         lcd.write_string('  INPUT BERHASIL ')
                         lcd.cursor_pos = (2, 0)
                         lcd.write_string('   TERHAPUS   ')
-                        IptKoordinat_X = ''
                         a = 0
                         time.sleep(1)
                         break
         print('C3')
-    print(X)
 
 def InputKoordinat_Y():
     global a, b, Y, IptKoordinat_Y, keypressed
@@ -202,7 +200,6 @@ def InputKoordinat_Y():
                     lcd.write_string('  INPUT BERHASIL ')
                     lcd.cursor_pos = (2, 0)
                     lcd.write_string('   TERHAPUS   ')
-                    #InputKoordinat_Y = ''
                     a = 0
                     time.sleep(1)
                     break
@@ -221,12 +218,66 @@ def InputKoordinat_Y():
                         lcd.write_string('  INPUT BERHASIL ')
                         lcd.cursor_pos = (2, 0)
                         lcd.write_string('   TERHAPUS   ')
-                        IptKoordinat_Y = ''
                         a = 0
                         time.sleep(1)
                         break
         print('C3')
         print(Y)
+
+def InputKoordinat_Z():
+    global a, b, Z, IptKoordinat_Z, keypressed
+    count = 0
+    while True:
+        IptKoordinat_Z = ''
+        Z = 0
+        print('LCD Homepage Z')
+        lcd.clear()
+        lcd.cursor_pos = (0, 0)
+        lcd.write_string('INPUT KOORDINAT X,Y,Z')
+        lcd.cursor_pos = (1, 0)
+        lcd.write_string('KOORDINAT Z:')
+        lcd.cursor_pos = (3, 0)
+        lcd.write_string('TEKAN D JIKA SELESAI')
+        
+        while True:
+            key()
+            if keypressed == 'D':
+                print(keypressed)
+                a = 0
+                lcd.clear()
+                return
+            else:
+                count += 1
+                if keypressed == 'C':
+                    print('C2')
+                    lcd.clear()
+                    lcd.cursor_pos = (1, 0)
+                    lcd.write_string('  INPUT BERHASIL ')
+                    lcd.cursor_pos = (2, 0)
+                    lcd.write_string('   TERHAPUS   ')
+                    a = 0
+                    time.sleep(1)
+                    break
+                elif count >= 0 and count <= 20:
+                    lcd.cursor_pos = (2, count)
+                    lcd.write_string(str(keypressed))
+                    a += 1
+                    IptKoordinat_Z = f"{IptKoordinat_Z}{keypressed}"
+                    print(IptKoordinat_Z)
+                    Z = int(IptKoordinat_Z)
+                    print(Z)
+                    if keypressed == 'C':
+                        print('C1')
+                        lcd.clear()
+                        lcd.cursor_pos = (1, 0)
+                        lcd.write_string('  INPUT BERHASIL ')
+                        lcd.cursor_pos = (2, 0)
+                        lcd.write_string('   TERHAPUS   ')
+                        a = 0
+                        time.sleep(1)
+                        break
+        print('C3')
+        print(Z)
 
 # - - - - - - - - - - - - - - - - 
 # - - - -  MAIN PROGRAM   - - - -
@@ -254,9 +305,18 @@ print("Pressed")
 
 # SECTION 2: Input Koordinat X
 InputKoordinat_X()
+print(X)
+print("Ipt Koordinat X: %s" % (IptKoordinat_X))
 
 # SECTION 3: Input Koordinat Y
 InputKoordinat_Y()
+print(Y)
+print("Ipt Koordinat Y: %s" % (IptKoordinat_Y))
+
+# SECTION 4: Input Koordinat Z
+InputKoordinat_Z()
+print(Z)
+print("Ipt Koordinat Z: %s" % (IptKoordinat_Z))
 
 START.wait_for_press()
 print('Selesai')
