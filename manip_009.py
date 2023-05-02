@@ -62,9 +62,9 @@ Ax12.connect()
 my_dxl_1 = Ax12(1)
 my_dxl_2 = Ax12(2)
 my_dxl_3 = Ax12(3)
-my_dxl_1.set_moving_speed(50)
-my_dxl_2.set_moving_speed(50)
-my_dxl_3.set_moving_speed(50)
+my_dxl_1.set_moving_speed(60)
+my_dxl_2.set_moving_speed(60)
+my_dxl_3.set_moving_speed(60)
 
 ## LCD SETUP
 lcd = CharLCD('PCF8574', 0x27)
@@ -338,6 +338,22 @@ def Formulasi():
     T2 = (60 + T2a) * 3.41
     T3 = (150 + T3a) * 3.41
 
+def gerakan_1():
+    global T1, T2, T3
+    global val1
+    my_dxl_1.set_goal_position(T1)
+    time.sleep(2)
+    my_dxl_2.set_goal_position(T2)
+    time.sleep(2)
+    my_dxl_3.set_goal_position(T3)
+    time.sleep(2)
+
+    val1 = int((0 - 0) * (180 - 0) / (1023 - 0) + 0)
+    SetAngle_4(val1)
+    time.sleep(0.015)
+    b = 2
+
+
 
 # - - - - - - - - - - - - - - - - 
 # - - - -  MAIN PROGRAM   - - - -
@@ -401,20 +417,20 @@ print(type(X))
 print(type(Y))
 print("X : %d" % (X))
 print("Y : %d" % (Y))
-print("theta1 : %d" % (theta1))
+print("theta1 : %d" % (math.degrees(theta1)))
 print(type(theta1))
 
 print(" ")
 print("h : %d" % (h))
-print("c3 : %d" % (c3))
-print("s3 : %d" % (s3))
-print("s3a : %d" % (s3a))
-print("theta3 : %d" % (theta3))
+print("c3 : %d" % (math.degrees(c3)))
+print("s3 : %d" % (math.degrees(s3)))
+print("s3a : %d" % (math.degrees(s3a)))
+print("theta3 : %d" % (math.degrees(theta3)))
 print(" ")
 print("p1 : %d" % (p1))
 print("p2 : %d" % (p2))
-print("theta2a : %d" % (theta2a))
-print("theta2 : %d" % (theta2))
+print("theta2a : %d" % (math.degrees(theta2a)))
+print("theta2 : %d" % (math.degrees(theta2)))
 print(" ")
 print("T1a : %d" % (T1a))
 print("T2a : %d" % (T2a))
@@ -424,7 +440,9 @@ print("T1 : %d" % (T1))
 print("T2 : %d" % (T2))
 print("T3 : %d" % (T3))
 
-
+START.wait_for_press()
+gerakan_1()
+time.sleep(2)
 
 START.wait_for_press()
 print('Selesai')
