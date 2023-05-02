@@ -62,9 +62,9 @@ Ax12.connect()
 my_dxl_1 = Ax12(1)
 my_dxl_2 = Ax12(2)
 my_dxl_3 = Ax12(3)
-my_dxl_1.set_moving_speed(60)
-my_dxl_2.set_moving_speed(60)
-my_dxl_3.set_moving_speed(60)
+my_dxl_1.set_moving_speed(50)
+my_dxl_2.set_moving_speed(50)
+my_dxl_3.set_moving_speed(50)
 
 ## LCD SETUP
 lcd = CharLCD('PCF8574', 0x27)
@@ -341,11 +341,11 @@ def Formulasi():
 def gerakan_1():
     global T1, T2, T3
     global val1
-    my_dxl_1.set_goal_position(T1)
+    my_dxl_1.set_goal_position(int(T1))
     time.sleep(2)
-    my_dxl_2.set_goal_position(T2)
+    my_dxl_2.set_goal_position(int(T2))
     time.sleep(2)
-    my_dxl_3.set_goal_position(T3)
+    my_dxl_3.set_goal_position(int(T3))
     time.sleep(2)
 
     val1 = int((0 - 0) * (180 - 0) / (1023 - 0) + 0)
