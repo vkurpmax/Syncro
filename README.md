@@ -14,6 +14,7 @@ piye make yolov8 for Object detection using custom dataset??
 
 # Dataset
 Annotation Format: YOLO1.1
+Image Size: 1280 x 720 px
 
 # Main Goal:
 ## Deteksi 2 class:   
