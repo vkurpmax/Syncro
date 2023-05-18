@@ -1,7 +1,7 @@
 Minta tolong iki dicoba training iso ra..
 iki wes 30 gambar kok aku gak iso2..
 
-piye make yolov8 for Object detection??
+piye make yolov8 for Object detection using custom dataset??
 
 # Official Sources:
 - https://github.com/ultralytics/ultralytics/tree/main
