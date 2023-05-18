@@ -14,3 +14,7 @@ piye make yolov8 for Object detection using custom dataset??
 
 # Dataset
 Annotation Format: YOLO1.1
+
+# Main Goal:
+Deteksi 2 class: Rubik dan Base
+![Main Goal](https://github.com/vkurpmax/Syncro/blob/main/bounding_box.png?raw=true)
