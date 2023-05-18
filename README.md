@@ -17,6 +17,6 @@ Annotation Format: YOLO1.1
 
 # Main Goal:
 Deteksi 2 class:   
-0: Rubik
+0: Rubik   
 1: Base
 ![Main Goal](https://github.com/vkurpmax/Syncro/blob/main/bounding_box.png?raw=true)
